@@ -1,1 +1,105 @@
 
+import javax.swing.ImageIcon;
+
+public class Fish {
+    private int x, y, width, height, dy;
+    private ImageIcon pic;
+    private String imageName;
+
+
+    public Fish() {
+        x = 150;
+        y = 0;
+        dy = 2;
+        width = 40;
+        height = 40;
+
+        pic = new ImageIcon("Blackberry.png");
+        pic = new ImageIcon("Cherry.png");
+        pic = new ImageIcon("Blueberry.png");
+        pic = new ImageIcon("Strawberry.png");
+        pic = new ImageIcon("Rasberry.png");
+        pic = new ImageIcon("Custard.png");
+
+    }
+ public Fish(int xV) {
+        x = xV;
+        y = 0;
+        dy = 2;
+        width = 55;
+        height = 55;
+double r = Math.random();
+if (r < 0.15) {
+    imageName = "Blackberry.png";
+    pic = new ImageIcon("Blackberry.png");
+} else if (r < 0.30) {
+    imageName = "Cherry.png";
+    pic = new ImageIcon("Cherry.png");
+} else if (r < 0.45) {
+    imageName = "Blueberry.png";
+    pic = new ImageIcon("Blueberry.png");
+} else if (r < 0.60) {
+    imageName = "Strawberry.png";
+    pic = new ImageIcon("Strawberry.png");
+} else if (r < 0.75) {
+    imageName = "Raspberry.png";
+    pic = new ImageIcon("Raspberry.png");
+} else {
+    imageName = "Custard.png";             
+    pic = new ImageIcon("Custard.png");   
+}
+ }
+        
+
+
+    
+    public boolean collidesWith(Hook hook) {
+    return this.x < hook.getX() + hook.getWidth() &&
+           this.x + this.width > hook.getX() &&
+           this.y < hook.getY() + hook.getHeight() &&
+           this.y + this.height > hook.getY();
+}
+    public int getX() {
+        return x;
+    }
+    public void setX(int x) {
+        this.x = x;
+    }
+    public int getY() {
+        return y;
+    }
+    public void setY(int y) {
+        this.y = y;
+    }
+    public int getWidth() {
+        return width;
+    }
+    public void setWidth(int width) {
+        this.width = width;
+    }
+    public int getHeight() {
+        return height;
+    }
+    public void setHeight(int height) {
+        this.height = height;
+    }
+    public int getDy() {
+        return dy;
+    }
+    public void setDy(int dy1) {
+        y+=dy1;
+    }
+    public ImageIcon getPic() {
+        return pic;
+    }
+    public void setPic(ImageIcon pic) {
+        this.pic = pic;
+    }
+public String getImageName() {
+    return imageName;
+}
+
+    
+
+    
+}
