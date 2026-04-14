@@ -1,105 +1,34 @@
-
 import javax.swing.ImageIcon;
+import java.awt.Rectangle;
 
 public class Fish {
-    private int x, y, width, height, dy;
+    private int x, y, width, height, dx;
     private ImageIcon pic;
-    private String imageName;
-
 
     public Fish() {
-        x = 150;
-        y = 0;
-        dy = 2;
-        width = 40;
-        height = 40;
+        x = -100; // start off-screen left
+        y = (int)(Math.random() * 600);
+        dx = 3;
 
-        pic = new ImageIcon("Blackberry.png");
-        pic = new ImageIcon("Cherry.png");
-        pic = new ImageIcon("Blueberry.png");
-        pic = new ImageIcon("Strawberry.png");
-        pic = new ImageIcon("Rasberry.png");
-        pic = new ImageIcon("Custard.png");
+        width = 80;
+        height = 60;
 
+        pic = new ImageIcon("Fish.png"); // Change image file
     }
- public Fish(int xV) {
-        x = xV;
-        y = 0;
-        dy = 2;
-        width = 55;
-        height = 55;
-double r = Math.random();
-if (r < 0.15) {
-    imageName = "Blackberry.png";
-    pic = new ImageIcon("Blackberry.png");
-} else if (r < 0.30) {
-    imageName = "Cherry.png";
-    pic = new ImageIcon("Cherry.png");
-} else if (r < 0.45) {
-    imageName = "Blueberry.png";
-    pic = new ImageIcon("Blueberry.png");
-} else if (r < 0.60) {
-    imageName = "Strawberry.png";
-    pic = new ImageIcon("Strawberry.png");
-} else if (r < 0.75) {
-    imageName = "Raspberry.png";
-    pic = new ImageIcon("Raspberry.png");
-} else {
-    imageName = "Custard.png";             
-    pic = new ImageIcon("Custard.png");   
-}
- }
-        
 
+    public void move() {
+        x += dx;
+    }
 
-    
     public boolean collidesWith(Hook hook) {
-    return this.x < hook.getX() + hook.getWidth() &&
-           this.x + this.width > hook.getX() &&
-           this.y < hook.getY() + hook.getHeight() &&
-           this.y + this.height > hook.getY();
-}
-    public int getX() {
-        return x;
+        Rectangle r1 = new Rectangle(x, y, width, height);
+        Rectangle r2 = new Rectangle(hook.getX(), hook.getY(), hook.getWidth(), hook.getHeight());
+        return r1.intersects(r2);
     }
-    public void setX(int x) {
-        this.x = x;
-    }
-    public int getY() {
-        return y;
-    }
-    public void setY(int y) {
-        this.y = y;
-    }
-    public int getWidth() {
-        return width;
-    }
-    public void setWidth(int width) {
-        this.width = width;
-    }
-    public int getHeight() {
-        return height;
-    }
-    public void setHeight(int height) {
-        this.height = height;
-    }
-    public int getDy() {
-        return dy;
-    }
-    public void setDy(int dy1) {
-        y+=dy1;
-    }
-    public ImageIcon getPic() {
-        return pic;
-    }
-    public void setPic(ImageIcon pic) {
-        this.pic = pic;
-    }
-public String getImageName() {
-    return imageName;
-}
 
-    
-
-    
+    public int getX() { return x; }
+    public int getY() { return y; }
+    public int getWidth() { return width; }
+    public int getHeight() { return height; }
+    public ImageIcon getPic() { return pic; }
 }
