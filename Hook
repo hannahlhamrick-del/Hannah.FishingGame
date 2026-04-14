@@ -1,77 +1,54 @@
 import javax.swing.ImageIcon;
+import java.awt.Rectangle;
 
 public class Hook {
-    private int dx, x, y, width, height;
+    private int x, y, width, height, dy;
     private ImageIcon ii;
+    private boolean dropping;
 
     public Hook() {
-        x = 550;
-        y = 550;
-        ii = new ImageIcon("HookLine.png");
-        width = 100;
-        height = 100;
-    }
-    public ImageIcon getPic() {
-        return ii;
+        x = 600;
+        y = 0;
+        width = 40;
+        height = 120;
+
+        ii = new ImageIcon("HookLine.png"); //change image file
+
+        dy = 0;
+        dropping = false;
     }
 
-    public int getDx() {
-        return dx;
+    public void drop() {
+        if (!dropping) {
+            dropping = true;
+            dy = 6;
+        }
     }
 
-    public void setDx(int dx) {
-        this.dx = dx;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public int getHeight() {
-        return height;
-    } 
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public ImageIcon getIi() {
-        return ii;
-    }
-
-    public void setIi(ImageIcon ii) {
-        this.ii = ii;
-    }
     public void move() {
-    x += dx;
+        if (dropping) {
+            y += dy;
 
-    if (x < 0) {
-        x = 0;
+            if (y > 900) {
+                reset();
+            }
+        }
     }
 
-    if (x + width > 1400) {
-        x = 1400 - width;
+    public void reset() {
+        y = 0;
+        dy = 0;
+        dropping = false;
     }
-}
 
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, width, height);
+    }
+
+    public ImageIcon getPic() { return ii; }
+    public int getX() { return x; }
+    public void setX(int x) { this.x = x; }
+    public int getY() { return y; }
+    public int getWidth() { return width; }
+    public int getHeight() { return height; }
 }
