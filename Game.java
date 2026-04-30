@@ -12,7 +12,7 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
     private Hook hook;
     private ArrayList<Fish> fish;
     private ImageIcon background;
-    private ImageIcon BerryGood;
+    private ImageIcon WinGood;
     private ImageIcon Slose;
 
     public Game() {
@@ -29,8 +29,8 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
         score = 0;
         lives = 3;
 
-        background = new ImageIcon("Polka.png"); // change image file
-        BerryGood = new ImageIcon("BerryGood.png"); // change image file
+        background = new ImageIcon("Backgroundy2k.png");
+        WinGood = new ImageIcon("WinGood.png"); 
         Slose = new ImageIcon("Slose.png"); // change image file
     }
 
@@ -69,12 +69,8 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
             break;
 
         case 'W':
-            g2d.drawImage(BerryGood.getImage(), 0, 0, getWidth(), getHeight(), this);
-            g2d.setColor(new Color(255, 204, 229));
-            g2d.fillRoundRect(550, 400, 250, 60, 30, 30);
-            g2d.setColor(Color.WHITE);
-            g2d.setFont(new Font("Arial", Font.BOLD, 24));
-            g2d.drawString("Press to play again", 565, 440);
+            g2d.drawImage(WinGood.getImage(), 0, 0, getWidth(), getHeight(), this);
+        
             break;
 
         case 'L':
@@ -121,8 +117,9 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
 
     public void drawFish(Graphics g) {
         for (Fish f : fish) {
-            g.drawImage(f.getPic().getImage(), f.getX(), f.getY(), f.getWidth(), f.getHeight(), this);
+            g.drawImage(f.getFish1().getImage(), f.getX(), f.getY(), f.getWidth(), f.getHeight(), this);
         }
+		
     }
 
     public void removeOOBFish() {
@@ -149,7 +146,7 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
     private void checkGameStatus() {
         if (lives <= 0) {
             screen = 'L';
-        } else if (score >= 15) {
+        } else if (score >= 5) {
             screen = 'W';
         }
     }
