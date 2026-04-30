@@ -3,7 +3,9 @@ import java.awt.Rectangle;
 
 public class Fish {
     private int x, y, width, height, dx;
-    private ImageIcon pic;
+    private ImageIcon fish1;
+    private ImageIcon fish2;
+
 
     public Fish() {
         x = -100; // start off-screen left
@@ -13,7 +15,8 @@ public class Fish {
         width = 80;
         height = 60;
 
-        pic = new ImageIcon("Fish.png"); // Change image file
+        fish1 = new ImageIcon("Fishy2k.png"); 
+        fish2 = new ImageIcon("Fish2y2k.png"); 
     }
 
     public void move() {
@@ -30,5 +33,6 @@ public class Fish {
     public int getY() { return y; }
     public int getWidth() { return width; }
     public int getHeight() { return height; }
-    public ImageIcon getPic() { return pic; }
+    public ImageIcon getFish1() { return fish1; }
+    public ImageIcon getFish2() { return fish2; }
 }
