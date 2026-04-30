@@ -8,9 +8,9 @@ public class Hook {
 
     public Hook() {
         x = 600;
-        y = 0;
+        y = 100;
         width = 40;
-        height = 120;
+        height = 170;
 
         ii = new ImageIcon("HookLine.png"); //change image file
 
